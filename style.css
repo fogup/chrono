@@ -1,0 +1,279 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&family=Ubuntu:wght@400&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #000;
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+body {
+  width: 100%;
+  touch-action: none;
+  background-color: #fff;
+}
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-track {
+  background-color: #bbb;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background-clip: padding-box;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #222;
+}
+
+.date {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 25%;
+  margin-inline: auto;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.date p {
+  display: block;
+  font-size: 2.25rem;
+  font-family: "ubuntu", "noto sans jp", sans-serif;
+  padding: 4px;
+  color: #000;
+  translate: 0 0;
+}
+.date p:not(:nth-child(3), :last-child)::after {
+  content: ".";
+  margin-left: 8px;
+}
+.date p:nth-child(3) {
+  margin-right: 20px;
+}
+.date p.small {
+  scale: 0.85;
+  translate: 0 -1px;
+}
+
+.time {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.time p {
+  font-size: 7rem;
+  font-family: "ubuntu", sans-serif;
+  padding-inline: 15px;
+  color: #000;
+}
+.time p:not(:last-child)::after {
+  content: ":";
+  margin-left: 30px;
+}
+
+.bottom_bar {
+  position: absolute;
+  right: 5px;
+  bottom: 0px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+}
+.bottom_bar .setting_btn {
+  display: block;
+  cursor: pointer;
+}
+.bottom_bar .setting_btn svg {
+  width: 28px;
+  fill: #000;
+}
+.bottom_bar a.link {
+  display: block;
+}
+.bottom_bar a.link svg {
+  width: 80px;
+  fill: #000;
+}
+
+section.settings {
+  position: fixed;
+  width: 400px;
+  height: 80%;
+  inset: 0;
+  margin: auto;
+  background-image: linear-gradient(to right bottom, rgba(136, 136, 136, 0.8666666667), rgba(0, 0, 0, 0.8666666667));
+  border-radius: 1rem;
+  scale: 0.8;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease-out;
+}
+section.settings.active {
+  scale: 1;
+  pointer-events: all;
+  opacity: 1;
+}
+section.settings * {
+  color: #fff;
+  font-family: "ubuntu", "noto sans jp", sans-serif;
+}
+section.settings p.ttl {
+  text-align: center;
+  margin-block: 2rem 4rem;
+  font-family: "ubuntu", sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+section.settings div {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  margin-inline: 5%;
+  margin-top: 1rem;
+}
+section.settings div p.sttl {
+  font-size: 1.2rem;
+  width: 6em;
+  text-align: right;
+  margin-right: 1rem;
+}
+section.settings div p.sttl::after {
+  content: "：";
+}
+section.settings div input.bgSpoit, section.settings div input.txtSpoit {
+  width: 3rem;
+  height: 2rem;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem 0 0 0.5rem;
+  background-color: #fff;
+}
+section.settings div p.sharp {
+  display: grid;
+  place-items: center;
+  padding-inline: 0.5em 0.1em;
+  height: 2rem;
+  background-color: #fff;
+  color: #000;
+}
+section.settings div input.bgCode, section.settings div input.txtCode {
+  width: 7rem;
+  height: 2rem;
+  border: none;
+  outline: none;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: #fff;
+  color: #000;
+  -webkit-user-select: all;
+     -moz-user-select: all;
+          user-select: all;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+section.settings div .wrap {
+  width: 100%;
+}
+section.settings div input[id*=radio] {
+  position: absolute;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+}
+section.settings div input[id*=radio]:checked + label::after {
+  scale: 1;
+}
+section.settings div label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 32px;
+  cursor: pointer;
+  height: 24px;
+  margin-left: 4rem;
+}
+section.settings div label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+section.settings div label::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 18px;
+  height: 18px;
+  background-color: #0a8;
+  border-radius: 50%;
+  scale: 0;
+  transition: all 0.2s ease-out;
+}
+section.settings .setting_close {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: 48px;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+}
+section.settings .setting_close::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 3px;
+  height: 28px;
+  background-color: #fff;
+  rotate: -45deg;
+}
+section.settings .setting_close::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 3px;
+  height: 28px;
+  background-color: #fff;
+  rotate: 45deg;
+}
+
+@media (max-width: 600px) {
+  .date {
+    top: 35%;
+  }
+  .date p {
+    font-size: 1.75rem;
+  }
+  .time p {
+    font-size: 4.75rem;
+  }
+}/*# sourceMappingURL=style.css.map */
